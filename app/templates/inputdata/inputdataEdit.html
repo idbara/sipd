@@ -1,0 +1,112 @@
+{% include 'head.html' %}
+
+<!-- Main Content -->
+		<div class="page-wrapper">
+			<div class="container-fluid">
+				
+				<!-- Title -->
+				<div class="row heading-bg">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+					  <h5 class="txt-dark">{{ title }}</h5>
+					</div>
+					
+				</div>
+				<!-- /Title -->
+				
+				<!-- Row -->
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default card-view">
+								
+								<div class="panel-wrapper collapse in">
+									<div class="panel-body">
+										<div class="form-wrap">
+											<form action="/inputdataUpdate/{{idkelompok}}" method="POST">
+												<input type="hidden" name="idtransaksi" value="{{idtransaksi}}">
+												<input type="hidden" name="urusan" value="{{idurusan}}">
+												<input type="hidden" name="header" value="{{idheader}}">
+												<input type="hidden" name="variabel" value="{{idvariabel}}">
+												<input type="hidden" name="tahun" value="{{tahun}}">
+
+												{% if request.args.get('subsubsubelement')  %}
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Subsubsub Element</label>
+													<input type="hidden" name="status" value="subsubsubelement">
+													<input type="text" class="form-control" name="nama" value="{{ subsubsubelement[2]}}" readonly>
+												</div>
+												{% elif request.args.get('subsubelement')  %}
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Subsub Element</label>
+													<input type="hidden" name="status" value="subsubelement">
+													<input type="text" class="form-control" name="nama" value="{{ subsubelementselect[2]}}" readonly>
+												</div>
+												{% elif request.args.get('subelement')  %}
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Sub Element</label>
+													<input type="hidden" name="status" value="subelement">
+													<input type="text" class="form-control" name="nama" value="{{ subelementselect[2]}}" readonly>
+												</div>
+												{% elif request.args.get('element')  %}
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Element</label>
+													<input type="hidden" name="status" value="element">
+													<input type="text" class="form-control" name="nama" value="{{ elementselect[2]}}" readonly>
+												</div>
+												{% endif %}
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Nilai</label>
+													<input type="text" class="form-control" name="nilai" value="{{ transaksi[7]}}">
+												</div>
+												{% if request.args.get('subsubsubelement')  %}
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Satuan</label>
+													<input type="hidden" name="idsubsubsubelement" value="{{subsubsubelementselect[0]}}">
+													<input type="text" class="form-control" name="satuan" value="{{ subsubsubelementselect[3]}}" >
+												</div>
+												{% elif request.args.get('subsubelement')  %}
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Satuan</label>
+													<input type="hidden" name="idsubsubelement" value="{{subsubelementselect[0]}}">
+													<input type="text" class="form-control" name="satuan" value="{{ subsubelementselect[3]}}" >
+												</div>
+												{% elif request.args.get('subelement')  %}
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Satuan</label>
+													<input type="hidden" name="idsubelement" value="{{subelementselect[0]}}">
+													<input type="text" class="form-control" name="satuan" value="{{ subelementselect[3]}}" >
+												</div>
+												{% elif request.args.get('element')  %}
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Satuan</label>
+													<input type="hidden" name="idelement" value="{{elementselect[0]}}">
+													<input type="text" class="form-control" name="satuan" value="{{ elementselect[4]}}" >
+												</div>
+												{% endif %}
+												<div class="form-group mt-30 mb-30">
+													<label class="control-label mb-10 text-left">Sumber Data</label>
+													<select class="form-control" name="sumberdata">
+														<option>- Pilih Sumber Data -</option>
+														{% for skpd in skpd %}
+														
+														<option value="{{ skpd.0 }}" {% if skpd.0 == transaksi[9] %} selected {% endif %}>{{ skpd.1 }} - {{ skpd.2 }}</option>
+														
+														{% endfor %}
+													</select>
+												</div>
+												<div class="form-group">
+													<button type="submit" class="btn  btn-success">Edit</button>
+												</div>
+												
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Row -->
+				
+			</div>
+			
+			
+{% include 'foot.html' %}

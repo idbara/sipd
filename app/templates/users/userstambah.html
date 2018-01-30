@@ -1,0 +1,78 @@
+{% include 'head.html' %}
+
+<!-- Main Content -->
+		<div class="page-wrapper">
+			<div class="container-fluid">
+				
+				<!-- Title -->
+				<div class="row heading-bg">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+					  <h5 class="txt-dark">{{ title }}</h5>
+					</div>
+					
+				</div>
+				<!-- /Title -->
+				
+				<!-- Row -->
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default card-view">
+								
+								<div class="panel-wrapper collapse in">
+									<div class="panel-body">
+										<div class="form-wrap">
+											<form action="/usersInsert" method="POST">
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Nama</label>
+													<input type="text" class="form-control" name="nama" >
+												</div>
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Username</label>
+													<input type="text" class="form-control" name="username">
+												</div>
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Password</label>
+													<input type="text" class="form-control" name="password"">
+												</div>
+												<div class="form-group mt-30 mb-30">
+													<label class="control-label mb-10 text-left">SKPD</label>
+													<select class="form-control" name="skpd">
+														<option>- Pilih SKPD -</option>
+														{% for skpd in optionskpd %}
+														<option value="{{ skpd.0 }}">{{ skpd.1 }} - {{ skpd.2 }}</option>
+														{% endfor %}
+													</select>
+												</div>
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">No HP</label>
+													<input type="text" class="form-control" name="telfon">
+												</div>
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Email</label>
+													<input type="email" class="form-control" name="email">
+												</div>
+												<div class="form-group mt-30 mb-30">
+													<label class="control-label mb-10 text-left">Hak Akses</label>
+													<select class="form-control" name="prev">
+														<option>- Pilih Hak Akses -</option>
+														<option value="admin">Admin</option>
+														<option value="operator">Operator</option>
+													</select>
+												</div>
+												<div class="form-group">
+													<button type="submit" class="btn  btn-success">Tambah</button>
+												</div>
+												
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Row -->
+				
+			</div>
+			
+			
+{% include 'foot.html' %}

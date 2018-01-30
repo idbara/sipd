@@ -1,0 +1,76 @@
+{% include 'head.html' %}
+
+<!-- Main Content -->
+		<div class="page-wrapper">
+			<div class="container-fluid">
+				
+				<!-- Title -->
+				<div class="row heading-bg">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+					  <a href="/usersTambah" class="btn btn-default btn-icon left-icon"> <i class="fa  fa-pencil-square-o"></i> <span>Tambah</span></a>
+					</div>
+					
+				</div>
+				<!-- /Title -->
+				
+				<!-- Row -->
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body">
+									<div class="table-wrap">
+										<div class="table-responsive">
+											<table id="example" class="table table-hover display  pb-30" >
+												<thead>
+													<tr>
+														<th>Nama</th>
+														<th>Username</th>
+														<th>SKPD</th>
+														<th>No HP</th>
+														<th>Email</th>
+														<th>Hak Akses</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+												<tfoot>
+													<tr>
+														<th>Nama</th>
+														<th>Username</th>
+														<th>SKPD</th>
+														<th>No HP</th>
+														<th>Email</th>
+														<th>Hak Akses</th>
+														<th>Action</th>
+													</tr>
+												</tfoot>
+												<tbody>
+													{% for users in data %}
+													<tr>
+														<td>{{ users.3 }}</td>
+														<td>{{ users.1 }}</td>
+														<td>{{ users.11 }}</td>
+														<td>{{ users.5 }}</td>
+														<td>{{ users.6 }}</td>
+														<td>{{ users.4 }}</td>
+														<td>
+															<a href="/usersupdate?id={{ users.0 }}" class="btn btn-default btn-outline fancy-button btn-xs btn-0">Edit</a>  <a href="/usersDel?id={{ users.0 }}" class="btn btn-danger btn-outline fancy-button btn-xs btn-0">Hapus</a>
+														</td>
+													</tr>
+
+													{% endfor %}
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+				<!-- /Row -->
+				
+			</div>
+			
+			
+{% include 'foot.html' %}

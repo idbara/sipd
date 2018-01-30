@@ -1,0 +1,49 @@
+{% include 'head.html' %}
+
+<!-- Main Content -->
+		<div class="page-wrapper">
+			<div class="container-fluid">
+				
+				<!-- Title -->
+				<div class="row heading-bg">
+					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+					  <h5 class="txt-dark">{{ title }}</h5>
+					</div>
+					
+				</div>
+				<!-- /Title -->
+				
+				<!-- Row -->
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default card-view">
+								
+								<div class="panel-wrapper collapse in">
+									<div class="panel-body">
+										<div class="form-wrap">
+											<form action="/skpdUpdate?id={{ data[0] }}" method="POST">
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Nama</label>
+													<input type="text" class="form-control" name="nama" value="{{ data[2] }}">
+												</div>
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Singkat</label>
+													<input type="text" class="form-control" name="singkat" value="{{ data[1] }}">
+												</div>
+												<div class="form-group">
+													<button type="submit" class="btn  btn-success">Edit</button>
+												</div>
+												
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Row -->
+				
+			</div>
+			
+			
+{% include 'foot.html' %}

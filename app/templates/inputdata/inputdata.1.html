@@ -1,0 +1,143 @@
+{% include 'head.html' %}
+
+<!-- Main Content -->
+		<div class="page-wrapper">
+			<div class="container-fluid">
+				
+				<!-- Title -->
+				<div class="row heading-bg">
+					<div class="col-md-6">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="pull-left">
+									<h6 class="panel-title txt-dark">{{ kelompok }}</h6>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body">
+									<form action="/inputdata/{{idkelompok}}" method="GET">
+									  	<div class="form-group mt-30 mb-30">
+											<label class="control-label mb-10 text-left">Urusan </label>
+											<select class="form-control" name="urusan">
+												<option value="">- Pilih Urusan -</option>
+												{% for urusan in pilihurusan %}
+												<option value="{{ urusan.0 }}" {% if urusan.0|string == idurusan %} selected {% endif %}>{{ urusan.2 }}</option>
+												{% endfor %}
+											</select>
+										</div>
+										<div class="form-group mt-30 mb-30">
+											<label class="control-label mb-10 text-left">Tahun</label>
+											<select class="form-control" name="tahun">
+												<option value="2018" {% if '2018' == tahun %} selected {% endif %}>2018</option>
+												<option value="2017" {% if '2017' == tahun %} selected {% endif %}>2017</option>
+												<option value="2016" {% if '2016' == tahun %} selected {% endif %}>2016</option>
+												<option value="2015" {% if '2015' == tahun %} selected {% endif %}>2015</option>
+												<option value="2014" {% if '2014' == tahun %} selected="" {% endif %}>2014</option>
+												<option value="2013" {% if '2013' == tahun %} selected {% endif %}>2013</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<button type="submit" class="btn  btn-success">Tampil</button>
+										</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					{% if request.args.get('urusan') %}
+					<div class="col-md-6">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="pull-left">
+									<h6 class="panel-title txt-dark"></h6>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body">
+									  	<div class="form-group mt-30 mb-30">
+											<label class="control-label mb-10 text-left">Header</label>
+											<select class="form-control" name="header">
+												<option value="">- Pilih Header -</option>
+												{% for pilih in pilihheader %}
+												<option value="{{ pilih.0 }}" {% if pilih.0|string == idheader %} selected {% endif %}>{{ pilih.2 }}</option>
+												{% endfor %}
+											</select>
+										</div>
+										
+										<div class="form-group">
+											<button type="submit" class="btn  btn-success">Tampil</button>
+										</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endif%}
+									</form>
+				</div>
+				<!-- /Title -->
+				{% if request.args.get('header') %}
+				<!-- Row -->
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="panel panel-default card-view">
+							
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body">
+									<div class="table-wrap">
+										<div class="table-responsive">
+											<table id="datable_1" class="table table-hover display  pb-30" >
+												<thead>
+													<tr>
+														<th colspan="6">Nama</th>
+														<th>Nilai</th>
+														<th>Satuan</th>
+														<th>Sumber Data</th>
+														<th>Aksi</th>
+													</tr>
+												</thead>
+												<tfoot>
+													<tr>
+														<th colspan="6">Nama</th>
+														<th>Nilai</th>
+														<th>Satuan</th>
+														<th>Sumber Data</th>
+														<th>Aksi</th>
+													</tr>
+												</tfoot>
+												<tbody>
+													<tr>
+														<td colspan="6"><b>{{ headerselect[2] }}</b></td>
+													</tr>
+													{% for v in variabel %}
+													<tr>
+														<td width="1"></td>
+														<td colspan="5">{{ v.1 }}</td>
+													</tr>
+														{% if v.3 == 'y' %}
+														<tr>
+															<td width="1"></td>
+															<td width="1"></td>
+															<td colspan="4">Parent</td>
+														</tr>
+														{% endif %}
+													
+													{% endfor %}
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+				<!-- /Row -->
+				{% endif%}
+				
+			</div>
+			
+			
+{% include 'foot.html' %}
